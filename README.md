@@ -51,7 +51,6 @@ data-warehouse-project/
 
 * **SQL Server Express** – lightweight relational database.
 * **SQL Server Management Studio (SSMS)** – database GUI.
-* **Draw.io** – data architecture, flow, and model diagrams.
 * **Python** – optional for data preprocessing and automation.
 * **Git & GitHub** – version control and collaboration.
 
