@@ -96,7 +96,7 @@ data-warehouse-project/
 
 Feel free to connect with me on:
 
-* [[LinkedIN]https://www.linkedin.com/in/nishanth-kashyap-06b979259/](#)
+* [[Linkedin](https://www.linkedin.com/in/nishanth-kashyap-06b979259/)](#)
 * [[GitHub](https://github.com/nishu-2004/)](#)
 
 ---
