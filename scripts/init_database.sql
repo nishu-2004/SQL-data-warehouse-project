@@ -1,4 +1,5 @@
 /*
+========================================================================================
 Purpose:
   This script creates a new database `data_warehouse` after checking if it already exists.
   If it exists it is dropped and recreated. 
@@ -6,10 +7,12 @@ Purpose:
     *) Gold
     *) SIlver
     *) Bronze
+==========================================================================================
 Warning:
   Running this script will drop the entire database data_warehouse if it already exists.
   All data in the database will be permanently deleted 
   and hence ensure you have proper backup before running this script
+==========================================================================================
 */
 
 Use Master;
