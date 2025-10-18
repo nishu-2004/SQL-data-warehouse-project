@@ -163,5 +163,5 @@ end
 go
 /*
 This command is used to execute the stored procedure:
-execute bronze.load_cust_info;
+-- execute bronze.load_cust_info;
 */
