@@ -7,7 +7,6 @@
         - Check for duplicates, nulls, unwanted spaces, invalid values.
         - Verify transformations between Bronze → Silver.
         - Ensure referential consistency between Silver tables.
-    AUTHOR: Nishanth P Kashyap
 ====================================================================
 */
 
