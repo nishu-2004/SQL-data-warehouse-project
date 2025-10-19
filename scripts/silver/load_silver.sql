@@ -9,6 +9,9 @@ Flow:
       3) Adds the resultant table after tranformation to the silver schema
 Note:
     The table name is the same as the table present in the bronze schema
+
+Execution:
+	exec silver.load_silver
 ======================================================================================================================================
 */
 
