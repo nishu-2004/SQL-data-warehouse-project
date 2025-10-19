@@ -17,13 +17,13 @@ BEGIN
     DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME; 
     BEGIN TRY
       SET @batch_start_time = GETDATE();
-      PRINT '================================================';
+      PRINT replicate('=',50);
       PRINT 'Loading Silver Layer';
-      PRINT '================================================';
+      PRINT replicate('=',50);
 
-      PRINT '------------------------------------------------';
+      PRINT replicate('-',50);
       PRINT 'Loading CRM Tables';
-      PRINT '------------------------------------------------';
+      PRINT replicate('-',50);
 
       -- Loading silver.crm_cust_info
           SET @start_time = GETDATE();
@@ -64,11 +64,11 @@ BEGIN
       ) t
       WHERE flag_last = 1; -- Select the most recent record per customer
       SET @end_time = GETDATE();
-          PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
-          PRINT '>> -------------';
+	  PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+	  PRINT '>>'+replicate('-',50);
 
       -- Loading silver.crm_prd_info
-          SET @start_time = GETDATE();
+	  SET @start_time = GETDATE();
       PRINT '>> Truncating Table: silver.crm_prd_info';
       TRUNCATE TABLE silver.crm_prd_info;
       PRINT '>> Inserting Data Into: silver.crm_prd_info';
@@ -103,7 +103,7 @@ BEGIN
       FROM bronze.crm_prd_info;
           SET @end_time = GETDATE();
           PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
-          PRINT '>> -------------';
+          PRINT '>>'+replicate('-',50);;
 
         -- Loading crm_sales_details
         SET @start_time = GETDATE();
@@ -151,7 +151,7 @@ BEGIN
         FROM bronze.crm_sales_details;
             SET @end_time = GETDATE();
             PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
-            PRINT '>> -------------';
+            PRINT '>>'+replicate('-',50);
 
         -- Loading erp_cust_az12
         SET @start_time = GETDATE();
@@ -180,11 +180,11 @@ BEGIN
         FROM bronze.erp_cust_az12;
           SET @end_time = GETDATE();
             PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
-            PRINT '>> -------------';
+            PRINT '>>'+replicate('-',50);
     
-        PRINT '------------------------------------------------';
+        PRINT replicate('-',50);
         PRINT 'Loading ERP Tables';
-        PRINT '------------------------------------------------';
+        PRINT replicate('-',50);
 
         -- Loading erp_loc_a101
         SET @start_time = GETDATE();
@@ -206,7 +206,7 @@ BEGIN
         FROM bronze.erp_loc_a101;
           SET @end_time = GETDATE();
             PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
-            PRINT '>> -------------';
+            PRINT '>>'replicate('-',50);
     
     -- Loading erp_px_cat_g1v2
     SET @start_time = GETDATE();
@@ -227,21 +227,21 @@ BEGIN
     FROM bronze.erp_px_cat_g1v2;
     SET @end_time = GETDATE();
     PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
-        PRINT '>> -------------';
+        PRINT '>>'+ replicate('-',50);
 
     SET @batch_end_time = GETDATE();
-    PRINT '=========================================='
+    PRINT replicate('=',50);
     PRINT 'Loading Silver Layer is Completed';
         PRINT '   - Total Load Duration: ' + CAST(DATEDIFF(SECOND, @batch_start_time, @batch_end_time) AS NVARCHAR) + ' seconds';
-    PRINT '=========================================='
+    PRINT replicate('=',50);
     
   END TRY
 	BEGIN CATCH
-		PRINT '=========================================='
+		PRINT replicate('-',50);
 		PRINT 'ERROR OCCURED DURING LOADING BRONZE LAYER'
 		PRINT 'Error Message' + ERROR_MESSAGE();
 		PRINT 'Error Message' + CAST (ERROR_NUMBER() AS NVARCHAR);
 		PRINT 'Error Message' + CAST (ERROR_STATE() AS NVARCHAR);
-		PRINT '=========================================='
+		PRINT replicate('-',50);
 	END CATCH
 END
