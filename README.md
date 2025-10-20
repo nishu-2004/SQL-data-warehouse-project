@@ -1,107 +1,147 @@
-# SQL Data Warehouse & Analytics Project
+
+# 🏢 SQL Data Warehouse & Analytics Project
 
 Welcome to my **SQL Data Warehouse & Analytics Project**! 🚀
-This project demonstrates the end-to-end process of building a modern data warehouse, performing ETL, and generating actionable analytics for business insights.
+This project showcases the complete lifecycle of building a **modern data warehouse**, performing **ETL transformations**, integrating multi-source data, and validating data quality — all using **SQL Server**.
 
 ---
 
-## 🏗️ Project Overview
+## 📘 Project Overview
 
-This project focuses on:
+This project demonstrates:
 
-* **Data Warehousing:** Consolidating data from multiple sources into a single, structured repository.
-* **ETL Pipelines:** Extracting, transforming, and loading raw data into a structured warehouse.
-* **Data Modeling:** Creating fact and dimension tables optimized for analytics using a **star schema**.
-* **Analytics & Reporting:** Running SQL-based queries to generate insights on sales, customer behavior, and product performance.
-
-The goal is to demonstrate best practices in **data engineering, analytics, and reporting**.
-
----
-
-## 🗂️ Data Architecture
-
-This project uses the **Medallion Architecture (Bronze, Silver, Gold)**:
-
-* **Bronze Layer:** Raw data ingested from source CSV files into SQL Server without modifications.
-* **Silver Layer:** Cleansed, standardized, and normalized data for easier querying.
-* **Gold Layer:** Business-ready data structured into a star schema, optimized for reporting.
+* **Data Warehousing** – Centralizing multiple business datasets (CRM, ERP, and Sales) into a unified warehouse.
+* **ETL Pipelines** – Implementing the **Medallion Architecture (Bronze → Silver → Gold)** for structured data transformation.
+* **Data Modeling** – Designing a **Star Schema** with **fact** and **dimension** views for analytics.
+* **Data Integration & Quality Checks** – Validating data consistency, removing duplicates, and ensuring referential integrity across layers.
+* **Analytics & Insights** – Running SQL-based queries to derive insights into **sales performance**, **customer behavior**, and **product trends**.
 
 ---
 
-## 📦 Repository Structure
+## 🧱 Data Architecture
+
+The project follows the **Medallion Architecture** pattern with three layers:
+
+| Layer                      | Description                                                                                                                               |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **Bronze (Raw Layer)**     | Direct ingestion of raw CSV data into SQL Server, with schemas reflecting original file structures.                                       |
+| **Silver (Cleaned Layer)** | Data cleaning, deduplication, and integration of multiple tables (e.g., merging CRM and ERP data).                                        |
+| **Gold (Business Layer)**  | Creation of **dimension** and **fact views** — `dim_customers`, `dim_products`, and `fact_sales` — optimized for analytics and reporting. |
+
+---
+
+## 🧩 Data Modeling
+
+The **Gold layer** follows a **Star Schema** design (`1` fact and `2` dimensions):
+
+* **Dimension Tables:**
+
+  * `dim_customers` – Descriptive attributes about customers (name, gender, region, etc.)
+  * `dim_products` – Product-related details (category, cost, status, etc.)
+
+* **Fact Table:**
+
+  * `fact_sales` – Transactional sales data linked to the above dimensions, containing measurable values like sales amount, quantity, and price.
+
+The **ER Diagram** illustrating the schema was created using **draw.io**, and is stored in the `docs/` folder.
+
+---
+
+## 📂 Repository Structure
 
 ```
 data-warehouse-project/
 │
-├── datasets/                 # Raw CSV datasets (ERP, CRM, etc.)
-├── scripts/                  # SQL scripts for ETL & transformations
-│   ├── bronze/
-│   ├── silver/
-│   └── gold/
-├── tests/                    # Data quality checks & validation scripts
-├── README.md                 # Project overview & instructions
-├── LICENSE                   # License info
-├── .gitignore
-└── requirements.txt          # Project dependencies
+├── datasets/                 # Raw CSV datasets (CRM, ERP, Sales, etc.)
+├── docs/                     # Documentation & ER diagrams (created in draw.io)
+├── scripts/                  # SQL ETL scripts organized by layer
+│   ├── bronze/               # Raw data ingestion
+│   ├── silver/               # Data cleaning, integration, and standardization
+│   └── gold/                 # Fact & dimension view creation
+├── tests/                    # Data quality & validation scripts
+├── README.md                 # Project overview (this file)
+└── LICENSE                   # License info
 ```
 
 ---
 
-## 🛠️ Tools & Technologies
+## ⚙️ Tools & Technologies
 
-* **SQL Server Express** – lightweight relational database.
-* **SQL Server Management Studio (SSMS)** – database GUI.
-* **Python** – optional for data preprocessing and automation.
-* **Git & GitHub** – version control and collaboration.
+* **Microsoft SQL Server Express** – Primary database engine.
+* **SQL Server Management Studio (SSMS)** – Used for ETL scripting and view creation.
+* **draw.io** – Used to design ER diagrams and visualize schema relationships.
+* **Git & GitHub** – For version control and project documentation.
+* *(Optional)* **Python** – For automation or CSV preprocessing in future expansions.
 
 ---
 
-## 🎯 Project Objectives
+## 🎯 Key Objectives
 
 1. **Data Engineering**
 
-   * Build ETL pipelines to ingest and transform data from multiple sources.
-   * Consolidate data into a centralized warehouse.
+   * Build and manage ETL pipelines across Bronze, Silver, and Gold layers.
+   * Integrate CRM and ERP datasets into a unified data model.
 
 2. **Data Modeling**
 
-   * Design fact and dimension tables.
-   * Implement a star schema for optimized analytics.
+   * Design a Star Schema with Fact and Dimension views.
+   * Ensure optimized query performance for reporting and analytics.
 
-3. **Analytics & Reporting**
+3. **Data Quality & Integration**
 
-   * Generate SQL-based reports for:
+   * Perform validation checks for duplicates, null values, referential integrity, and inconsistent categories.
+   * Merge multi-source columns (e.g., gender integration between CRM and ERP tables).
+   * Validate date consistency and record completeness across all layers.
 
-     * Customer behavior analysis
-     * Product performance tracking
-     * Sales trends and KPIs
+4. **Analytics & Reporting**
 
-4. **Data Quality**
+   * Enable SQL-based reports for:
 
-   * Validate datasets for consistency, completeness, and accuracy.
-
----
-
-## 🚀 Future Work
-
-* Automate ETL pipelines with scheduled jobs.
-* Integrate BI tools like Power BI or Tableau for dashboards.
-* Extend warehouse for historical analysis and predictive analytics.
-* Implement advanced data quality checks and anomaly detection.
+     * Sales trend analysis
+     * Customer purchase behavior
+     * Product category performance
 
 ---
 
-## ☕ Stay Connected
+## ✅ Data Validation Examples
 
-Feel free to connect with me on:
+Quality checks included in the `tests/` folder ensure data consistency, such as:
 
-* [Linkedin](https://www.linkedin.com/in/nishanth-kashyap-06b979259/)
-* [GitHub](https://github.com/nishu-2004/)
+* **Duplicate detection** in Silver layer tables
+* **Gender integration** using CRM as the master source
+* **Null and referential integrity checks** in Gold layer
+* **Chronological validation** (`order_date < ship_date < due_date`)
+* **Count comparison** between Silver and Gold layers
+
+---
+
+## 🚀 Future Enhancements
+
+* **Analytical Layer Development:**
+  Build a full **analytical project** on top of the Gold layer — including SQL-based KPI dashboards, customer segmentation analysis, and performance insights.
+
+* **Cloud Integration:**
+  Migrate the warehouse to a **cloud-based platform** such as **Azure SQL Database** or **AWS Redshift** for scalability and automated ETL orchestration.
+
+* **ETL Automation:**
+  Schedule data refresh jobs using SQL Agent or Python scripts.
+
+* **BI Visualization:**
+  Connect to **Power BI** or **Tableau** for dashboard development.
+
+* **Data Monitoring & Anomaly Detection:**
+  Implement alerting mechanisms to track data drift and quality issues.
+
+---
+
+## ☕ Connect with Me
+
+* **LinkedIn:** [Nishanth P Kashyap](https://www.linkedin.com/in/nishanth-kashyap-06b979259/)
+* **GitHub:** [nishu-2004](https://github.com/nishu-2004)
 
 ---
 
 ## 🛡️ License
 
-This project is licensed under the **MIT License** – feel free to use, modify, and share with proper attribution.
+This project is licensed under the **MIT License** – you’re free to use, modify, and share with proper attribution.
 
----
