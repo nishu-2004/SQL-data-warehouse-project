@@ -21,11 +21,11 @@ This project demonstrates:
 
 The project follows the **Medallion Architecture** pattern with three layers:
 
-| Layer                      | Description                                                                                                                               |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Bronze (Raw Layer)**     | Direct ingestion of raw CSV data into SQL Server, with schemas reflecting original file structures.                                       |
-| **Silver (Cleaned Layer)** | Data cleaning, deduplication, and integration of multiple tables (e.g., merging CRM and ERP data).                                        |
-| **Gold (Business Layer)**  | Creation of **dimension** and **fact views** — `dim_customers`, `dim_products`, and `fact_sales` — optimized for analytics and reporting. |
+| Layer                      | Description                                                                                                                                                               |
+| -------------------------- | -----------------------------------------------------------------------------------------------------------------------------------------                                 |
+| **Bronze (Raw Layer)**     | Direct ingestion of raw CSV data into SQL Server, with schemas reflecting original file structures.                                                                       |
+| **Silver (Cleaned Layer)** | Data cleaning, deduplication, data normalization as well as decision for data integration.                                                                                |
+| **Gold (Business Layer)**  | Merging of different tables and Creation of **dimension** and **fact views** — `dim_customers`, `dim_products`, and `fact_sales` — optimized for analytics and reporting. |
 
 ---
 
