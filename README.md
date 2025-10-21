@@ -1,7 +1,6 @@
 
-# 🏢 SQL Data Warehouse & Analytics Project
-
-Welcome to my **SQL Data Warehouse & Analytics Project**! 🚀
+# 🏢 SQL Data Warehouse Project
+Welcome to my **SQL Data Warehouse  Project**! 🚀
 This project showcases the complete lifecycle of building a **modern data warehouse**, performing **ETL transformations**, integrating multi-source data, and validating data quality — all using **SQL Server**.
 
 ---
